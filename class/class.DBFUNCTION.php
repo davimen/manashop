@@ -1,26 +1,31 @@
 <?php
-include str_replace('\\', '/', dirname(dirname(__FILE__))) . '/class/config.DATABASE.php';
+//include str_replace('\\', '/', dirname(dirname(__FILE__))) . '/class/config.DATABASE.php';
 class DBFUNCTION {
   private $connect = null;
   function __construct() {
     $this->dbConnect();
   }
-  function getConnect() {
+  function getConnect() {	 
     return $this->connect;
   }
   function __destruct() {
     $this->connect = null;
   }
   function dbConnect() {
+	  
     try {
       if (empty ($this->connect)) {
-        $this->connect = mysql_connect(HOSTADDRESS, DBACCOUNT, DBPASSWORD);
-        mysql_query("SET NAMES utf8");
-        $result = mysql_select_db(DBNAME, $this->connect);
-        return $result;
-      }
+        $this->connect = mysql_pconnect('208.91.199.85', 'capitzqu_shop', 'B0382~02w~gE') or die("Unable to Connect to '208.91.199.85'");
+	    mysql_query("SET NAMES utf8");
+        $result = mysql_select_db('capitzqu_shop',$this->connect) or die("Could not open the db 'capitzqu_shop'");
+		return $result;
+      }else
+	  {
+		  return $this->connect;
+	  }
     }
     catch (Exception $ex) {
+	 
       return false;
     }
   }
@@ -44,7 +49,7 @@ class DBFUNCTION {
 -----------------------------------------------------------------*/
   function getScale($tbName, $condition, $orderby, $arrayCol = null) {
     try {
-      $this->dbConnect();
+      if($this->dbConnect()){
       $orderby = (!empty ($orderby)) ? " ORDER BY " . $orderby : '';
       $condition = (!empty ($condition)) ? ' WHERE ' . $condition : '';
       $sql = "SELECT " . $type . "(" . $col . ") FROM " . $tbName . "  " . $condition . "  " . $orderby;
@@ -52,6 +57,10 @@ class DBFUNCTION {
       if ($row = $this->nextAssoc($rst))
         $count = (int) $row[0];
       return $count;
+	  }else
+	  {
+		return 0;  
+	  }
     }
     catch (Exception $ex) {
       return 0;
@@ -89,8 +98,7 @@ class DBFUNCTION {
     try {
       $orderby = (!empty ($orderby)) ? ' ORDER BY ' . $orderby : '';
       $condition = (!empty ($condition)) ? ' WHERE ' . $condition : '';
-      $sql = 'SELECT * FROM ' . $tbName . '  ' . $condition . '  ' . $orderby;
-      //echo $sql;
+      $sql = 'SELECT * FROM ' . $tbName . '  ' . $condition . '  ' . $orderby;      
       $rst = $this->doSQL($sql);
       $this->dbClose();
       return $rst;
@@ -104,7 +112,7 @@ class DBFUNCTION {
 -----------------------------------------------------------------*/
   function getDynamic_cursor($select, $tbName, $condition, $orderby) {
     try {
-      $this->dbConnect();
+      if($this->dbConnect()){
       $orderby = (!empty ($orderby)) ? ' ORDER BY ' . $orderby : '';
       $condition = (!empty ($condition)) ? ' WHERE ' . $condition : '';
       $sql = 'SELECT ' . $select . ' FROM ' . $tbName . '  ' . $condition . '  ' . $orderby;
@@ -112,6 +120,10 @@ class DBFUNCTION {
         echo $sql;
       $rst = $this->doSQL($sql);
       return $rst;
+	  }else
+	  {
+		 return null; 
+	  }
     }
     catch (Exception $ex) {
       return null;
@@ -121,7 +133,7 @@ class DBFUNCTION {
     try {
 
       $array = array(2);
-      $this->dbConnect();
+      if($this->dbConnect()){
       if (count($arrayValue) > 0) {
         foreach ($arrayValue as & $value)
           $value = $this->removeSQLInjection($value);
@@ -143,7 +155,11 @@ class DBFUNCTION {
         unset ($id);
         unset ($affect);
         return $array;
-      }
+	    }
+      }else
+	  {
+		 return null;  
+	  }
     }
     catch (Exception $ex) {
         $logfilename = "logs_".date("d-m-Y",time()).".txt";
@@ -163,7 +179,7 @@ class DBFUNCTION {
       $str = '';
       $type = strtoupper($type);
       $condition = (!empty ($condition)) ? ' WHERE ' . $condition : '';
-      $this->dbConnect();
+      if($this->dbConnect()){
       foreach ($arrayValue as $key => $value) {
         if (strpos("$arrayValue[$key]", "$key") === false)
           $str .= "$key='" . $this->removeSQLInjection($arrayValue[$key]) . "',";
@@ -190,6 +206,10 @@ class DBFUNCTION {
       unset ($str);
       unset ($sql);
       return (int) $affect;
+	  }else
+	  {
+		return 0;  
+	  }
     }
     catch (Exception $ex) {
 
@@ -207,7 +227,7 @@ class DBFUNCTION {
 -----------------------------------------------------------------*/
   function deleteDynamic($tbName, $condition) {
     try {
-      $this->dbConnect();
+      if($this->dbConnect()){
       $condition = (!empty ($condition)) ? ' WHERE ' . $condition : '';
       $sql = "DELETE FROM " . $tbName . " " . $condition;
       $affect = $this->doNoSQL($sql);
@@ -221,6 +241,10 @@ class DBFUNCTION {
       unset ($condition);
       unset ($sql);
       return $affect;
+	  }else
+	  {
+		 return 0;  
+	  }
     }
     catch (Exception $ex) {
       $logfilename = "logs_".date("d-m-Y",time()).".txt";
@@ -323,11 +347,16 @@ class DBFUNCTION {
 
 -----------------------------------------------------------------*/
   function doSQL($sql) {
-//echo $sql."</br>";
-    try {
-      $this->dbConnect();
-      $rst = mysql_query($sql);
-      return $rst;
+     
+    try { 
+	  
+      if($this->dbConnect())
+	  {         
+		$rst = mysql_query($sql);
+		return $rst;
+	  }else{
+		  return null;
+	  }
     }
     catch (Exception $ex) {
       return null;
@@ -339,9 +368,13 @@ class DBFUNCTION {
   function doNoSQL($sql) {
 //echo $sql."</br>";
     try {
-      $this->dbConnect();
+      if($this->dbConnect()){
       $affect = mysql_query($sql);
       return $affect;
+	  }
+	  else{
+		  return 0;
+	  }
     }
     catch (Exception $ex) {
       return 0;
@@ -353,11 +386,14 @@ class DBFUNCTION {
   function truncateTable($table) {
     try {
       if (!empty ($table)) {
-        $this->dbConnect();
+        if($this->dbConnect()){
         $sql = "TRUNCATE TABLE " . $table;
         $affect = $this->doNoSQL($sql);
         unset ($sql);
         return $affect;
+	    } else {
+			return 0;
+		}
       }
     }
     catch (Exception $ex) {
@@ -371,7 +407,7 @@ class DBFUNCTION {
     try {
       $str = '';
       $array_row = array();
-      $this->dbConnect();
+      if($this->dbConnect()){
       $rst = $this->getDynamic($tbName, $condition, $orderby);
       if (is_array($array_col))
         $array_col = $this->getColumns($rst);
@@ -393,6 +429,9 @@ class DBFUNCTION {
       unset ($str);
       unset ($row);
       return $array_row;
+	  }else{
+		  return 0;
+	  }
     }
     catch (Exception $ex) {
     }
@@ -682,8 +721,8 @@ class DBFUNCTION {
   function processLogin($username, $password) {
     $msg = "fail";
     $password = md5($password);
-    $result = $this->getDynamic("webmaster", "username='$username' and password='$password' and status=1", "");
-    if ($this->totalRows($result) > 0) {
+    $result = $this->getDynamic("webmaster", "username='$username' and password='$password' and status=1", "");	
+	if ($this->totalRows($result) > 0) {
       $row = $this->nextData($result);
       $_SESSION["user_login"]["id"] = $row["id"];
       $_SESSION["user_login"]["username"] = stripslashes($username);

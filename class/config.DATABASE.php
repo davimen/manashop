@@ -1,6 +1,6 @@
 <?php
-define("HOSTADDRESS","localhost");
-define("DBACCOUNT","giaiphapto_hg");
-define("DBPASSWORD","Qfqf1onb");
-define("DBNAME","giaiphapto_hg");
+define('HOSTADDRESS','208.91.199.85');
+define('DBACCOUNT','capitzqu_shop');
+define('DBPASSWORD','B0382~02w~gE');
+define('DBNAME','capitzqu_shop');
 ?>
