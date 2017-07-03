@@ -1,0 +1,33 @@
+body{margin:0 auto;text-align:left;font:11px Tahoma;background:#FFF;color:#000}
+#back-top{top:50px;left:40px;position:fixed;z-index:9999;margin-right:0px;visibility:hidden;margin:0px}
+#back-top a,#back-bottom a{color:#fff;font-size:0em;font-weight:bold;text-decoration:none;text-transform:uppercase;width:37px;display:block;text-align:center}
+#back-top a:hover,#back-bottom a:hover{color:#807f7f}
+#back-top span{background:url("images/up-arrow.png") no-repeat scroll 0 0 transparent;border-radius:3px 3px 3px 3px;display:block;height:24px;margin-bottom:7px;width:35px}
+#back-top a:hover span,#back-bottom a:hover span{background-position:0 -34px}
+#back-bottom{top:80px;left:40px;position:fixed;z-index:9999;margin-right:0px;visibility:hidden;margin:0px}
+#back-bottom span{background:url("images/down-arrow.png") no-repeat scroll 0 0 transparent;border-radius:3px 3px 3px 3px;display:block;height:24px;margin-bottom:7px;width:35px}
+.swap{width:700px;min-height:60px;border:0px solid red;margin-left:48px;margin-top:30px; position: relative;}
+h1{font-size:20px;margin:0px 0px 10px;padding:0px;color:#000080}
+.header{height:100px;background:#FFF;overflow:hidden}
+a{color:#BF0733;text-decoration:none}
+.title{border-top:3px solid #666666;font-size:18px;font-weight:bold;text-align:center;padding-top:10px}
+.icon_r{padding-top:20px}
+.content{margin:5px 0px 5px;color:#333;padding:10px 5px 10px}
+.table_dichvu{margin:0px 0px 0px;width:100%}
+.table_dichvu tr{background:#fff}
+.table_dichvu tr td{margin:0px;border-top:1px dotted #ccc}
+.colum1{float:left;width:40%}
+.price{color:#000;font-weight:bold;margin-left:10px}
+.inhoadon{float:left;background:#F74953;color:#fff;padding:7px}
+.tongket{position:relative;height:91px;border:0px solid #000}
+.tax{position:absolute;top:10px;left:176px}
+#congtienhang{position:absolute;top:0px;right:50px;width:151px;text-align:center}
+#tienthueGTGT{position:absolute;top:20px;right:50px;width:151px;text-align:center}
+#tongthanhtien{position:absolute;top:40px;right:50px;width:151px;text-align:center}
+.tienbangchu{position:absolute;top:55px;left:85px;width:588px;text-align:left}
+#sendmail {
+    position:absolute;
+    z-index: 10;
+    right: 25px;
+    top: 30px;
+}

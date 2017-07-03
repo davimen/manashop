@@ -1,0 +1,260 @@
+body {
+  padding: 0px;
+  margin: 0px;
+  text-align: left;
+  font-size: 11.5px;
+  font-family: Tahoma;
+}
+.div_wraper {
+ width: 220px;
+ border: 0px solid #000000;
+ overflow: hidden;
+ line-height: 150%;
+ margin-left: 3px;
+ margin-top: 10px;
+ margin-bottom: 10px;
+ font-size: 11.5px;
+}
+.clear,#clear {
+  clear: both;
+  font-size: 1px;
+}
+.header {
+  line-height: 150%;
+  height: 34px;
+  position: relative;
+  border: 0px solid #000;
+}
+.ngay {
+  position: absolute;
+  top: 90px;
+  left: 500px;
+}
+
+.thang {
+  position: absolute;
+  top: 90px;
+  left: 540px;
+}
+
+.nam {
+  position: absolute;
+  top: 90px;
+  left: 586px;
+}
+
+
+.center {
+  border-bottom: 0px solid #ccc;
+  padding: 0px 0px 10px;
+  margin-bottom: 10px;
+  width: 220px;
+}
+
+.thongtin {
+  position: relative;
+  height: 109px;
+  border: 0px solid #000;
+}
+.fullname_sell {
+  position: absolute;
+  top: 10px;
+  left: 181px;
+  width: 478px;
+  border: 0px solid #000;
+
+}
+.fullname_dv {
+  position: absolute;
+  top: 30px;
+  left: 107px;
+  width: 553px;
+  border: 0px solid #000;
+}
+
+.mst {
+  position: absolute;
+  top: 48px;
+  left: 107px;
+  width: 553px;
+  border: 0px solid #000;
+}
+
+.address {
+  position: absolute;
+  top: 67px;
+  left: 82px;
+  width: 339px;
+  border: 0px solid #000;
+}
+
+.thanhtoan {
+  position: absolute;
+  top: 67px;
+  left: 559px;
+  width: 107px;
+  border: 0px solid #000;
+}
+
+.mucsanpham {
+  height:70px;
+  padding-top: 0px;
+  border: 0px solid #000;
+}
+.field_sp {
+  height: 20px;
+  border: 0px solid #000;
+  overflow: hidden;
+  padding-left: 20px;
+}
+.stt {
+  float: left;
+  width:27px;
+  text-align: center;
+  border: 0px solid #000;
+  height: 20px;
+}
+
+.hanghoa {
+  float: left;
+  width:250px;
+  text-align: center;
+  border: 0px solid #000;
+  height: 20px;
+}
+
+.donvitinh {
+  float: left;
+  width:57px;
+  text-align: center;
+  border: 0px solid #000;
+  height: 20px;
+}
+
+.soluong {
+  float: left;
+  width:80px;
+  text-align: center;
+  border: 0px solid #000;
+  height: 20px;
+}
+
+.dongia {
+  float: left;
+  width:80px;
+  text-align: center;
+  border: 0px solid #000;
+  height: 20px;
+}
+
+.thanhtien {
+  float: left;
+  width:138px;
+  text-align: center;
+  border: 0px solid #000;
+  height: 20px;
+}
+
+
+.title_hoadon {
+  font-size: 14px;
+  text-align: center;
+  margin: 10px 0px 10px;
+
+}
+.table_dichvu {
+  margin:0px 0px 0px;
+  width: 100%;
+  border-top:2px dotted #000;
+}
+.table_dichvu tr{
+  background: #fff;
+}
+.table_dichvu tr td {
+  margin: 1px;
+  border-top: 0px dotted #ccc;
+}
+.colum1{
+  float: left;
+  width:40%;
+}
+
+
+.price {
+  color: #000;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.inhoadon {
+  float: left;
+  background: #F74953;
+  color: #fff;
+  padding: 7px;
+}
+
+.tongket {
+  position: relative;
+  height: 91px;
+  border: 0px solid #000;
+}
+.tax {
+  position: absolute;
+  top: 10px;
+  left: 176px;
+}
+#congtienhang {
+  position: absolute;
+  top: 0px;
+  right: 50px;
+  width: 151px;
+  text-align: center;
+}
+
+#tienthueGTGT {
+  position: absolute;
+  top: 20px;
+  right: 50px;
+  width: 151px;
+  text-align: center;
+}
+
+#tongthanhtien {
+  position: absolute;
+  top: 40px;
+  right: 50px;
+  width: 151px;
+  text-align: center;
+}
+.tienbangchu {
+  position: absolute;
+  top: 55px;
+  left: 85px;
+  width: 588px;
+  text-align: left;
+}
+h1 {
+  font-size: 14px;
+  text-align: center;
+
+}
+
+.mainForm {
+  width: 100%;
+}
+.boxGrey {
+  color: #000000;
+  width:80px;
+}
+
+.boxGrey2 {
+  color: #000;
+  font-weight: normal;
+}
+
+.footer
+{
+  text-align: center;
+  color:#000;
+}
+
